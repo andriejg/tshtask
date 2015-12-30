@@ -1,8 +1,13 @@
 class Exchange < ActiveRecord::Base
-  #you can change names if you don't like them
+  require 'open-uri'
+
+  attr_accessor :file
 
   def get_nbp_xml
-
+  	open('lastc.xml', 'wb') do |file|
+      file << open('http://www.nbp.pl/kursy/xml/lastc.xml').read
+      self.file = file
+    end
   end
 
   def save_current_rates

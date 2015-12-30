@@ -15,29 +15,25 @@ ActiveRecord::Schema.define(version: 20140217103509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
-  enable_extension "uuid-ossp"
 
-  create_table "currencies", force: true do |t|
-    t.string   "name"
-    t.integer  "converter"
-    t.string   "code"
-    t.float    "buy_price"
-    t.float    "sell_price"
-    t.integer  "exchange_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "currencies", force: :cascade do |t|
+    t.string  "name"
+    t.integer "converter"
+    t.string  "code"
+    t.float   "buy_price"
+    t.float   "sell_price"
+    t.integer "exchange_id"
   end
 
   add_index "currencies", ["exchange_id"], name: "index_currencies_on_exchange_id", using: :btree
 
-  create_table "exchanges", force: true do |t|
+  create_table "exchanges", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

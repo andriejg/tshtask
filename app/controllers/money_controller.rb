@@ -1,4 +1,5 @@
 class MoneyController < ApplicationController
+  before_action :authenticate_user!, only: [:refresh_rates]
 
   def index
     #show list of exchange rates with creation time
@@ -10,6 +11,10 @@ class MoneyController < ApplicationController
   end
 
   def refresh_rates
+    exchange = Exchange.new
+    exchange.get_nbp_xml
+    exchange.save_current_rates
+    redirect_to :back, alert: 'Downloaded exchange rates'
     #for manual refreshing
     #get latest exchange rates and save to db
     #can be helpful: 
