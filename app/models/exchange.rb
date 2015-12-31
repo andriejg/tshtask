@@ -2,6 +2,8 @@ class Exchange < ActiveRecord::Base
   require 'open-uri'
 
   attr_accessor :file
+  
+  paginates_per 10
 
   def get_nbp_xml
   	open('lastc.xml', 'wb') do |file|

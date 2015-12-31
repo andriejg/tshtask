@@ -1,3 +1,4 @@
-%h3 Hello :)
+%h3 Exchange application
 - if signed_in?
-  = link_to('Get exchange rates', refresh_rates_money_index_path)
+  %p= link_to('Get exchange rates', refresh_rates_money_index_path)
+  %p= link_to('Show list of exchange rates', money_index_path)

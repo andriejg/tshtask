@@ -1,9 +1,10 @@
 class MoneyController < ApplicationController
   before_action :authenticate_user!, only: [:refresh_rates]
 
+  #show list of exchange rates with creation time
+  #don't forget about pagination
   def index
-    #show list of exchange rates with creation time
-    #don't forget about pagination
+    @exchanges = Exchange.page(params[:page])
   end
 
   def show

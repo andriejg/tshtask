@@ -1,0 +1,5 @@
+%h3 Exchange Rates
+%ul
+  - @exchanges.each do |exchange|
+    %li= "#{exchange.name}, created at #{exchange.created_at}"
+  = paginate @exchanges

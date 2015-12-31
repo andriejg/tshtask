@@ -14,6 +14,7 @@ gem 'pg'
 gem 'simple_form'
 gem 'sidekiq'
 gem 'nokogiri'
+gem 'kaminari'
 
 group :development do
   gem 'better_errors'
