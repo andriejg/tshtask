@@ -1,5 +1,5 @@
 class MoneyController < ApplicationController
-  before_action :authenticate_user!, only: [:refresh_rates]
+  before_action :authenticate_user!
 
   #show list of exchange rates with creation time
   #don't forget about pagination
@@ -7,8 +7,9 @@ class MoneyController < ApplicationController
     @exchanges = Exchange.page(params[:page])
   end
 
+  #show table of currencies for selected exchange rate
   def show
-    #show table of currencies for selected exchange rate
+    @exchange = Exchange.find(params[:id])
   end
 
   #for manual refreshing

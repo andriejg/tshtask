@@ -1,5 +1,5 @@
 %h3 Exchange Rates
 %ul
   - @exchanges.each do |exchange|
-    %li= "#{exchange.name}, created at #{exchange.created_at}"
+    %li= link_to("#{exchange.name}, created at #{exchange.created_at}", money_path(exchange))
   = paginate @exchanges

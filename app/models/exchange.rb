@@ -1,4 +1,6 @@
 class Exchange < ActiveRecord::Base
+  has_many :currencies
+
   require 'open-uri'
 
   attr_accessor :file

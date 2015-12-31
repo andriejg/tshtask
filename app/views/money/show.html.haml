@@ -1,0 +1,19 @@
+%h3 Exchange #{@exchange.name} - Currencies Table
+%table
+  %thead
+    %tr
+      %th Name
+      %th Converter
+      %th Code
+      %th Buy price
+      %th Sell price
+  %tbody
+    - @exchange.currencies.each do |currency|
+      %tr
+        %td #{currency.name}
+        %td #{currency.converter}
+        %td #{currency.code}
+        %td #{currency.buy_price}
+        %td #{currency.sell_price}
+
+= link_to('Back', money_index_path)
