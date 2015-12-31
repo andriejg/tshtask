@@ -13,6 +13,7 @@ gem 'haml-rails'
 gem 'pg'
 gem 'simple_form'
 gem 'sidekiq'
+gem 'nokogiri'
 
 group :development do
   gem 'better_errors'

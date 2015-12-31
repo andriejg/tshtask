@@ -11,6 +11,12 @@ class Exchange < ActiveRecord::Base
   end
 
   def save_current_rates
-
+  	xml = Nokogiri::XML(File.open(file)) { |config| config.strict.noblanks }
+  	self.name = xml.xpath("//numer_tabeli")[0].inner_text
+  	if Exchange.last.nil? || Exchange.last.name != self.name
+  		self.save
+  	  xml.xpath("//pozycja").each { |node| Currency.create_from_node(node, self) }
+  	end
   end
+
 end

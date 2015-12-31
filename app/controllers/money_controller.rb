@@ -10,15 +10,15 @@ class MoneyController < ApplicationController
     #show table of currencies for selected exchange rate
   end
 
+  #for manual refreshing
+  #get latest exchange rates and save to db
+  #can be helpful: 
+  #http://www.nbp.pl/home.aspx?f=/kursy/instrukcja_pobierania_kursow_walut.html
   def refresh_rates
     exchange = Exchange.new
     exchange.get_nbp_xml
     exchange.save_current_rates
     redirect_to :back, alert: 'Downloaded exchange rates'
-    #for manual refreshing
-    #get latest exchange rates and save to db
-    #can be helpful: 
-    #http://www.nbp.pl/home.aspx?f=/kursy/instrukcja_pobierania_kursow_walut.html
   end
 
   def report
