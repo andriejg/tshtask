@@ -24,6 +24,12 @@ class MoneyController < ApplicationController
   end
 
   def report
+    currency = Currency.where(code: params[:money_id])
+    unless currency.empty?
+      @currency_hash = currency.raport_hash
+    else
+      redirect_to money_index_path, alert: 'Wrong currency'
+    end
     #generate a report for selected currency
     #report should show: basic statistics: mean, median, average
     #also You can generate a simple chart(use can use some js library)

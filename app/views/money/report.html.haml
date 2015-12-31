@@ -1,0 +1,22 @@
+%h3= @currency_hash[:name]
+%table{border:1}
+  %thead
+    %tr
+      %th 
+      %th Max
+      %th Min
+      %th Average
+      %th Median
+  %tbody 
+    %tr
+      %td Buy
+      %td #{@currency_hash[:buy_data][:max]}
+      %td #{@currency_hash[:buy_data][:min]}
+      %td #{@currency_hash[:buy_data][:average]}
+      %td #{@currency_hash[:buy_data][:median]}
+    %tr
+      %td Sell
+      %td #{@currency_hash[:sell_data][:max]}
+      %td #{@currency_hash[:sell_data][:min]}
+      %td #{@currency_hash[:sell_data][:average]}
+      %td #{@currency_hash[:sell_data][:median]}

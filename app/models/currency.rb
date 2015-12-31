@@ -12,4 +12,22 @@ class Currency < ActiveRecord::Base
   	)
   end
   
+  def self.raport_hash
+    {
+      name: all.first.name,
+      buy_data: all.price_hash('buy'),
+      sell_data: all.price_hash('sell')
+    }
+  end
+
+  def self.price_hash(action)
+    prices = all.map(&"#{action}_price".to_sym).sort
+    size = prices.size
+    max = prices.max
+    min = prices.min
+    average = (prices.sum / size).round(4)
+    median = (prices[(size - 1) / 2] + prices[size / 2]) / 2.0
+    { max: max, min: min, average: average, median: median }
+  end
+
 end
