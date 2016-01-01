@@ -11,16 +11,25 @@ class Currency < ActiveRecord::Base
   	  exchange: exchange
   	)
   end
+
+  def self.prices_hash
+    prices = { buy: {}, sell: {} }
+    all.each do |currency|
+      prices[:buy][currency.exchange.created_at] = currency.buy_price
+      prices[:sell][currency.exchange.created_at] = currency.sell_price
+    end
+    prices
+  end
   
   def self.raport_hash
     {
       name: all.first.name,
-      buy_data: all.price_hash('buy'),
-      sell_data: all.price_hash('sell')
+      buy_data: all.statistics_hash('buy'),
+      sell_data: all.statistics_hash('sell')
     }
   end
 
-  def self.price_hash(action)
+  def self.statistics_hash(action)
     prices = all.map(&"#{action}_price".to_sym).sort
     size = prices.size
     max = prices.max

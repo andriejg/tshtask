@@ -1,3 +1,4 @@
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
 %h3= @currency_hash[:name]
 %table{border:1}
   %thead
@@ -20,3 +21,6 @@
       %td #{@currency_hash[:sell_data][:min]}
       %td #{@currency_hash[:sell_data][:average]}
       %td #{@currency_hash[:sell_data][:median]}
+
+= line_chart [ {name: "Buy prices", data: @chart_prices[:buy]}, 
+               {name: "Sell prices", data: @chart_prices[:sell]} ]

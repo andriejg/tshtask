@@ -27,6 +27,7 @@ class MoneyController < ApplicationController
     currency = Currency.where(code: params[:money_id])
     unless currency.empty?
       @currency_hash = currency.raport_hash
+      @chart_prices = currency.prices_hash
     else
       redirect_to money_index_path, alert: 'Wrong currency'
     end
