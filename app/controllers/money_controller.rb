@@ -4,7 +4,7 @@ class MoneyController < ApplicationController
   #show list of exchange rates with creation time
   #don't forget about pagination
   def index
-    @exchanges = Exchange.page(params[:page])
+    @exchanges = Exchange.all.reverse_order.page(params[:page])
   end
 
   #show table of currencies for selected exchange rate
