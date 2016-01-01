@@ -10,7 +10,7 @@
   %tbody
     - @exchange.currencies.each do |currency|
       %tr
-        %td= link_to("#{currency.name}", money_report_path(currency.code))
+        %td= link_to("#{currency.name}", money_report_path(currency.code, exchange: @exchange.id))
         %td #{currency.converter}
         %td #{currency.code}
         %td #{currency.buy_price}

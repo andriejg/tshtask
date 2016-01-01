@@ -1,4 +1,3 @@
-= javascript_include_tag "//www.google.com/jsapi", "chartkick"
 %h3= @currency_hash[:name]
 %table{border:1}
   %thead
@@ -24,3 +23,5 @@
 
 = line_chart [ {name: "Buy prices", data: @chart_prices[:buy]}, 
                {name: "Sell prices", data: @chart_prices[:sell]} ]
+
+= link_to('Back', money_path(@exchange))
