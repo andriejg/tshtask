@@ -6,6 +6,7 @@ class ExchangeWorker
 
   def perform
     Exchange.get_new_rates
+    UpdateMailer.notification_email.deliver_now
   end
 
 end
