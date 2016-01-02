@@ -17,9 +17,7 @@ class MoneyController < ApplicationController
   #can be helpful: 
   #http://www.nbp.pl/home.aspx?f=/kursy/instrukcja_pobierania_kursow_walut.html
   def refresh_rates
-    exchange = Exchange.new
-    exchange.get_nbp_xml
-    exchange.save_current_rates
+    Exchange.get_new_rates
     redirect_to :back, alert: 'Downloaded exchange rates'
   end
 

@@ -16,6 +16,7 @@ gem 'sidekiq'
 gem 'nokogiri'
 gem 'kaminari'
 gem 'chartkick'
+gem 'sidetiq'
 
 group :development do
   gem 'better_errors'
