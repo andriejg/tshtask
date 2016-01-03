@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.5'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -24,12 +24,12 @@ group :development do
   gem 'html2haml'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'pry'
 end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'puma'
   gem 'rspec-rails'
+  gem 'pry'
 end
 group :production do
   gem 'unicorn'
